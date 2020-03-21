@@ -7,4 +7,11 @@ export default (socketClient, ui) => {
       <button onClick="window.ui.sendLike('${data.id}')">Like</button>
     </div>`;
   });
+
+  socketClient.on('successLogin', (token) => {
+    console.log(token);
+    ui.updateClientData(token);
+    ui.login.style.display = 'none';
+    ui.wall.style.display = 'block';
+  });
 };
